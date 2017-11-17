@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4"
+	xmlns="http://java.sun.com/xml/ns/j2ee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>demo-01</display-name>
+	<!--  Servlet Poll -->
+	<servlet>
+		<servlet-name>polls</servlet-name>
+		<servlet-class>com.pollit.web.Application</servlet-class>
+		<init-param>
+			<param-name>urlEdit</param-name>
+			<param-value>/WEB-INF/vues/edit.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>urlErreurs</param-name>
+			<param-value>/WEB-INF/vues/erreurs.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>urlList</param-name>
+			<param-value>/WEB-INF/vues/list.jsp</param-value>
+		</init-param>
+	</servlet>
+	<!-- Servlet User -->
+	<servlet>
+		<servlet-name>users</servlet-name>
+		<servlet-class>com.pollit.web.AppUser</servlet-class>
+		<init-param>
+			<param-name>urlConnect</param-name>
+			<param-value>/WEB-INF/vues/connect.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>urlErreurs</param-name>
+			<param-value>/WEB-INF/vues/erreurs.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>urlSubscribe</param-name>
+			<param-value>/WEB-INF/vues/subscribe.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>urlHomePage</param-name>
+			<param-value>/WEB-INF/vues/homepage.jsp</param-value>
+		</init-param>
+	</servlet>
+	<!--  Mapping Servlet Poll-->
+	<servlet-mapping>
+		<servlet-name>polls</servlet-name>
+		<url-pattern>/do/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>users</servlet-name>
+		<url-pattern>/user/*</url-pattern>
+	</servlet-mapping>
+	<!--  Fichiers d'accueil -->
+	<welcome-file-list>
+		<welcome-file>/vues/connect.jsp</welcome-file>
+	</welcome-file-list>
+	<!--  Page d'erreur inattendue -->
+	<error-page>
+		<exception-type>java.lang.Exception</exception-type>
+		<location>/WEB-INF/vues/exception.jsp</location>
+	</error-page>
+</web-app>

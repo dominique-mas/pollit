@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- la classe dao -->
+	<bean id="dao" class="com.pollit.dao.DaoImpl" init-method="init"/>
+	<!-- la classe service -->
+	<bean id="service"
+		class="com.pollit.service.ServiceImpl">
+		<property name="dao">
+			<ref local="dao" />
+		</property>
+	</bean>
+</beans>
