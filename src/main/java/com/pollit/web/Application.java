@@ -1,10 +1,7 @@
 package com.pollit.web;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,11 +15,9 @@ import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
 
 import com.pollit.dao.DaoException;
-import com.pollit.dao.DaoImpl;
 import com.pollit.entities.Answer;
 import com.pollit.entities.Poll;
 import com.pollit.service.IService;
-import com.pollit.service.ServiceImpl;
 import com.pollit.util.EmptyStringPredicate;
 
 @SuppressWarnings("serial")
@@ -30,17 +25,16 @@ public class Application extends HttpServlet {
 	// paramètres d'instance
 	private String urlErreurs = null;
 
-	private ArrayList erreursInitialisation = new ArrayList<String>();
+	private ArrayList<String> erreursInitialisation = new ArrayList<String>();
 
 	private String[] parametres = { "urlList", "urlEdit", "urlErreurs" };
 
-	private Map params = new HashMap<String, String>();
+	private Map<String, String> params = new HashMap<String, String>();
 
 	// service
 	IService service = null;
 
 	// init
-	@SuppressWarnings("unchecked")
 	public void init() throws ServletException {
 		// on récupère les paramètres d'initialisation de la servlet
 		ServletConfig config = getServletConfig();
@@ -70,7 +64,6 @@ public class Application extends HttpServlet {
 	}
 
 	// GET
-	@SuppressWarnings("unchecked")
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
 
@@ -173,7 +166,6 @@ public class Application extends HttpServlet {
 			HttpServletResponse response) throws ServletException, IOException {
 		// on récupère les éléments postés
 		boolean wrongForm = false;
-		boolean error;
 		// le texte
 		String text = request.getParameter("text").trim();
 		// texte valide ?
